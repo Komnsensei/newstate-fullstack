@@ -1,0 +1,16 @@
+{
+  "name": "newstate-fullstack",
+  "version": "1.0.0",
+  "description": "Structural continuity fullstack distribution (SCC, scars, QIH sim, kernel surface)",
+  "main": "kernel/scc/index.cjs",
+  "scripts": {
+    "test:scc": "node -e \"const s=require('./kernel/scc'); const c=s.mint({floor:{locked:true},evidenceBundle:{mode:'recorded'}}); const v=s.verify(c); console.log(c.status, v); process.exit(v.ok?0:1)\"",
+    "sync:core": "node scripts/sync-from-newstate.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Komnsensei/newstate-fullstack.git"
+  },
+  "keywords": ["newstate", "scc", "structural-continuity", "qih", "esma"],
+  "license": "SEE LICENSE IN CORE REPO"
+}
