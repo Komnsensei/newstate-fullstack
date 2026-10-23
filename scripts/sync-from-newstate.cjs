@@ -16,7 +16,8 @@ const ref = process.env.NEWSTATE_CORE_REF || DEFAULT_CORE_SHA;
 function runGit(args, cwd, capture = false) {
   const options = { cwd, stdio: capture ? 'pipe' : 'inherit' };
   if (capture) options.encoding = 'utf8';
-  return execFileSync('git', args, options).toString().trim();
+  const output = execFileSync('git', args, options);
+  return capture ? String(output).trim() : '';
 }
 
 function normalizeRemote(value) {
