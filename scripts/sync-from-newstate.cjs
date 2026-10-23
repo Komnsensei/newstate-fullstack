@@ -21,7 +21,7 @@ function runGit(args, cwd, capture = false) {
 }
 
 function normalizeRemote(value) {
-  return value.trim().replace(/\\.git$/i, '').replace(/\\/+$/, '').toLowerCase();
+  return value.trim().replace(/\.git$/i, '').replace(/\/+$/, '').toLowerCase();
 }
 
 function fail(message) {
