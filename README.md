@@ -124,3 +124,20 @@ See core repo for LICENSE / CODE_OF_CONDUCT.
 Co-craft: structural selfhood over narrative persona.
 
 *NewState · ESMA · scars · seal · certificate*
+
+
+## Reproducible core runtime
+
+This repository is a curated SCC/QIH distribution shell, not a byte-for-byte copy of the full NewState runtime. The full runtime is fetched into the ignored `runtime/` directory by `npm run sync:core`.
+
+The sync helper pins its default to NewState commit `e9e4f9798e5f899bb23e420e25814a9ff3e74e11`. It refuses to replace an untracked/non-Git `runtime/` directory, mismatched remotes, or a dirty runtime worktree. The pinned SHA can be deliberately changed with `NEWSTATE_CORE_REF`; `NEWSTATE_CORE_URL` can point to an HTTPS fork. The script uses Git argument arrays rather than passing ref or URL values through a shell.
+
+After sync:
+
+```bash
+cd runtime
+npm ci
+npm test
+```
+
+To upgrade the default runtime snapshot, first audit and test the desired NewState commit, then update `DEFAULT_CORE_SHA` in `scripts/sync-from-newstate.cjs` in a reviewed change.
